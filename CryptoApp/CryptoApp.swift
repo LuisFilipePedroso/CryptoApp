@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct CryptoAppApp: App {
+struct CryptoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                HomeView()
+                    .toolbar(.hidden)
+            }
         }
     }
 }
