@@ -211,3 +211,9 @@ extension CoinModel {
         )
     }
 }
+
+extension HomeViewModel {
+    static var preview : HomeViewModel {
+        return HomeViewModel()
+    }
+}
