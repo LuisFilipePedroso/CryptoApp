@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject private var vm: HomeViewModel
     @State private var showPortfolio: Bool = false
     
     var body: some View {
@@ -18,6 +19,16 @@ struct HomeView: View {
             
             VStack {
                 HomeHeader()
+                
+                ColumnTitles()
+                
+                if !showPortfolio {
+                    CoinsList(showHoldingsColumn: false)
+                        .transition(.move(edge: .leading))
+                } else {
+                    CoinsList(showHoldingsColumn: true)
+                        .transition(.move(edge: .trailing))
+                }
                 
                 Spacer(minLength: 0)
             }
@@ -53,6 +64,33 @@ struct HomeView: View {
         }
         .padding(.horizontal)
     }
+    
+    @ViewBuilder
+    private func ColumnTitles() -> some View {
+        HStack {
+            Text("Coin")
+            Spacer()
+            if showPortfolio {
+                Text("Holdings")
+            }
+            Text("Price")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+        }
+        .font(.caption)
+        .foregroundStyle(Color.theme.secondaryText)
+        .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    private func CoinsList(showHoldingsColumn: Bool) -> some View {
+        List {
+            ForEach(vm.allCoins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: showHoldingsColumn)
+                    .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
+            }
+        }
+        .listStyle(PlainListStyle())
+    }
 }
 
 #Preview {
@@ -60,4 +98,5 @@ struct HomeView: View {
         HomeView()
             .toolbar(.hidden)
     }
+    .environmentObject(HomeViewModel.preview)
 }
