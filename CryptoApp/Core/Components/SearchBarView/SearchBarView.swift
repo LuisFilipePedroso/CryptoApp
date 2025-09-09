@@ -27,7 +27,7 @@ struct SearchBarView: View {
                         .offset(x: 12)
                         .foregroundStyle(Color.theme.accent)
                         .opacity(searchText.isEmpty ? 0 : 1)
-                        .animation(.easeInOut(duration: 0.3), value: searchText.isEmpty)
+                        .animation(.easeInOut(duration: 0.2), value: searchText.isEmpty)
                         .onTapGesture {
                             searchText = ""
                             isFocused = false
