@@ -217,3 +217,17 @@ extension HomeViewModel {
         return HomeViewModel()
     }
 }
+
+extension StatisticModel {
+    static var previewWithPositivePercentageChange: StatisticModel {
+        return StatisticModel(title: "Market Cap", value: "$12.58n", percentageChange: 25.34)
+    }
+    
+    static var previewWithNegativePercentageChange: StatisticModel {
+        return StatisticModel(title: "Portfolio Volume", value: "$50.4k", percentageChange: -12.34)
+    }
+    
+    static var previewWithoutPercentageChange: StatisticModel {
+        return StatisticModel(title: "Total Volume", value: "$1.23Tr")
+    }
+}
