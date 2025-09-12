@@ -56,7 +56,7 @@ extension PortfolioView {
     private func CoinsList() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(vm.allCoins) { coin in
+                ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
                     CoinListItem(coin: coin)
                 }
             }
