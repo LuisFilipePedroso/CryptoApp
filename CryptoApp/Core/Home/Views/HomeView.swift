@@ -33,6 +33,9 @@ struct HomeView: View {
                 
                 if !showPortfolio {
                     CoinsList(showHoldingsColumn: false)
+                        .refreshable {
+                            vm.reload()
+                        }
                         .transition(.move(edge: .leading))
                 } else {
                     CoinsList(showHoldingsColumn: true)
