@@ -71,6 +71,16 @@ struct CoinModel: Identifiable, Codable {
     }
 }
 
+extension CoinModel: Hashable {
+    static func == (lhs: CoinModel, rhs: CoinModel) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 struct SparklineIn7D: Codable {
     let price: [Double]?
 }
