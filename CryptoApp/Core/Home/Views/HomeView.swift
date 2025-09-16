@@ -32,13 +32,13 @@ struct HomeView: View {
                 ColumnTitles()
                 
                 if !showPortfolio {
-                    CoinsList(showHoldingsColumn: false)
+                    CoinsList()
                         .refreshable {
                             vm.reload()
                         }
                         .transition(.move(edge: .leading))
                 } else {
-                    CoinsList(showHoldingsColumn: true)
+                    PortfolioCoinsList()
                         .transition(.move(edge: .trailing))
                 }
                 
@@ -132,10 +132,21 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    private func CoinsList(showHoldingsColumn: Bool) -> some View {
+    private func CoinsList() -> some View {
         List {
-            ForEach(showHoldingsColumn ? vm.portfolioCoins : vm.allCoins) { coin in
-                CoinRowView(coin: coin, showHoldingsColumn: showHoldingsColumn)
+            ForEach(vm.allCoins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: false)
+                    .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
+            }
+        }
+        .listStyle(PlainListStyle())
+    }
+    
+    @ViewBuilder
+    private func PortfolioCoinsList() -> some View {
+        List {
+            ForEach(vm.portfolioCoins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
             }
         }
