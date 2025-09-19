@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     
     @StateObject var vm: DetailViewModel
+    @State private var showFullDescription: Bool = false
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -30,6 +31,7 @@ struct DetailView: View {
                     VStack(spacing: 20) {
                         DetailSectionTitle(title: "Overview")
                         Divider()
+                        DescriptionSection
                         DetailSectionGrid(iterateOver: vm.overviewStatistics)
                         
                         DetailSectionTitle(title: "Additional Details")
@@ -63,8 +65,32 @@ extension DetailView {
             .bold()
             .foregroundStyle(Color.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
-        
-//        Divider()
+    }
+    
+    private var DescriptionSection: some View {
+        ZStack {
+            if let description = vm.coinDescription, !description.isEmpty {
+                VStack(alignment: .leading) {
+                    Text(description)
+                        .lineLimit(showFullDescription ? nil : 3)
+                        .font(.callout)
+                        .foregroundStyle(Color.theme.secondaryText)
+                    
+                    Button {
+                        withAnimation(.easeInOut) {
+                            showFullDescription.toggle()
+                        }
+                    } label: {
+                        Text(showFullDescription ? "Less" : "Read more...")
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .padding(.vertical, 4)
+                    }
+                    .tint(.blue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
     }
     
     @ViewBuilder
