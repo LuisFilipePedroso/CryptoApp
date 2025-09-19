@@ -43,7 +43,7 @@ struct DetailView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationBarTrailingItems()
+                    NavigationBarTrailingItems
                 }
             }
         }
@@ -81,8 +81,7 @@ extension DetailView {
         )
     }
     
-    @ViewBuilder
-    private func NavigationBarTrailingItems() -> some View {
+    private var NavigationBarTrailingItems: some View {
         HStack {
             Text(vm.coin.symbol.uppercased())
                 .font(.headline)
