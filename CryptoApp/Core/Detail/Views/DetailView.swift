@@ -37,6 +37,7 @@ struct DetailView: View {
                         DetailSectionTitle(title: "Additional Details")
                         Divider()
                         DetailSectionGrid(iterateOver: vm.additionalStatistics)
+                        LinksSection
                     }
                     .padding()
                 }
@@ -107,6 +108,23 @@ extension DetailView {
         )
     }
     
+    private var LinksSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            if let website = vm.website,
+               let url = URL(string: website) {
+                Link("Website", destination: url)
+            }
+            
+            if let reddit = vm.redditURL,
+               let url = URL(string: reddit) {
+                Link("Reddit", destination: url)
+            }
+        }
+        .tint(.blue)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .font(.headline)
+    }
+
     private var NavigationBarTrailingItems: some View {
         HStack {
             Text(vm.coin.symbol.uppercased())
