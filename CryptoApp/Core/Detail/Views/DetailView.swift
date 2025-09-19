@@ -27,13 +27,25 @@ struct DetailView: View {
                     ChartView(coin: vm.coin)
                         .padding(.vertical)
                     
-                    DetailSection(title: "Overview", iterateOver: vm.overviewStatistics)
-                    DetailSection(title: "Additional Details", iterateOver: vm.additionalStatistics)
+                    VStack(spacing: 20) {
+                        DetailSectionTitle(title: "Overview")
+                        Divider()
+                        DetailSectionGrid(iterateOver: vm.overviewStatistics)
+                        
+                        DetailSectionTitle(title: "Additional Details")
+                        Divider()
+                        DetailSectionGrid(iterateOver: vm.additionalStatistics)
+                    }
+                    .padding()
                 }
-                .padding()
             }
             .navigationTitle(vm.coin.name)
             .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationBarTrailingItems()
+                }
+            }
         }
     }
 }
@@ -45,15 +57,18 @@ struct DetailView: View {
 extension DetailView {
     
     @ViewBuilder
-    private func DetailSection(title: String, iterateOver: [StatisticModel]) -> some View {
+    private func DetailSectionTitle(title: String) -> some View {
         Text(title)
             .font(.title)
             .bold()
             .foregroundStyle(Color.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
         
-        Divider()
-        
+//        Divider()
+    }
+    
+    @ViewBuilder
+    private func DetailSectionGrid(iterateOver: [StatisticModel]) -> some View {
         LazyVGrid(
             columns: columns,
             alignment: .leading,
@@ -64,5 +79,16 @@ extension DetailView {
                 }
             }
         )
+    }
+    
+    @ViewBuilder
+    private func NavigationBarTrailingItems() -> some View {
+        HStack {
+            Text(vm.coin.symbol.uppercased())
+                .font(.headline)
+                .foregroundStyle(Color.theme.secondaryText)
+            CoinImageView(coin: vm.coin)
+                .frame(width: 24, height: 24)
+        }
     }
 }
