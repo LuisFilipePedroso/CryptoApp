@@ -23,8 +23,9 @@ struct DetailView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 20) {
-                    Spacer(minLength: 150)
+                VStack {
+                    ChartView(coin: vm.coin)
+                        .padding(.vertical)
                     
                     DetailSection(title: "Overview", iterateOver: vm.overviewStatistics)
                     DetailSection(title: "Additional Details", iterateOver: vm.additionalStatistics)
