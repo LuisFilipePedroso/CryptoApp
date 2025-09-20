@@ -25,22 +25,22 @@ struct HomeView: View {
                 })
             
             VStack {
-                HomeHeader()
+                HomeHeader
                 
                 HomeStatsView(showPortfolio: $showPortfolio)
                 
                 SearchBarView(searchText: $vm.searchText)
                 
-                ColumnTitles()
+                ColumnTitles
                 
                 if !showPortfolio {
-                    CoinsList()
+                    CoinsList
                         .refreshable {
                             vm.reload()
                         }
                         .transition(.move(edge: .leading))
                 } else {
-                    PortfolioCoinsList()
+                    PortfolioCoinsList
                         .transition(.move(edge: .trailing))
                 }
                 
@@ -52,8 +52,7 @@ struct HomeView: View {
         }
     }
     
-    @ViewBuilder
-    private func HomeHeader() -> some View {
+    private var HomeHeader: some View {
         HStack {
             CircleButtonView(icon: showPortfolio ? "plus" : "info", width: 40, height: 40)
                 .animation(.default, value: false)
@@ -87,8 +86,7 @@ struct HomeView: View {
         .padding(.horizontal)
     }
     
-    @ViewBuilder
-    private func ColumnTitles() -> some View {
+    private var ColumnTitles: some View {
         HStack {
             HStack(spacing: 4) {
                 Text("Coin")
@@ -136,8 +134,7 @@ struct HomeView: View {
         .padding(.horizontal)
     }
     
-    @ViewBuilder
-    private func CoinsList() -> some View {
+    private var CoinsList: some View {
         List {
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
@@ -150,8 +147,7 @@ struct HomeView: View {
         .listStyle(PlainListStyle())
     }
     
-    @ViewBuilder
-    private func PortfolioCoinsList() -> some View {
+    private var PortfolioCoinsList: some View {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
