@@ -1,18 +1,19 @@
-# CryptoApp
+# Crypto App
 
-This project was made by following the Swiftful Thinking bootcamp on YouTube. It users MVVM architecture, Combine, and CoreData. 
+A Swift/SwiftUI app to track live cryptocurrency prices and manage them in your portfolio.
+Built with Swift, SwiftUI, CoreData and data from CoinGecko.
 
-#### Features
+#### ✨ Features
 
 - Track live cryptocurrency prices
 - Manage your portfolio
 - See details of a cryptocurrency
 
-#### Demo
+#### 🎥 Demo
 
 https://github.com/user-attachments/assets/759b2281-ee8a-4b52-9e06-a8cf4242082f
 
-#### Screens
+#### 📱 Screens
 
 Home Screen:
 
@@ -32,4 +33,10 @@ Edit Portfolio screen:
 
 <img src="https://github.com/user-attachments/assets/b4f50783-f8ce-4de5-afac-b8400a539831" width="300" />
 
+#### 🛠️ Tech Stack
 
+- Swift
+- SwiftUI
+- Combine
+- CoreData (for Portfolio persistence)
+- API: CoinGecko
