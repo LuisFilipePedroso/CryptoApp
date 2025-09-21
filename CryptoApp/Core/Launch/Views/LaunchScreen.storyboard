@@ -35,8 +35,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="N9T-P8-ln0" firstAttribute="centerX" secondItem="5d4-hr-WSY" secondAttribute="centerX" id="Imp-3x-LTh"/>
                                     <constraint firstItem="N9T-P8-ln0" firstAttribute="centerX" secondItem="5d4-hr-WSY" secondAttribute="centerX" id="L0Q-9j-btb"/>
                                     <constraint firstItem="N9T-P8-ln0" firstAttribute="centerY" secondItem="5d4-hr-WSY" secondAttribute="centerY" id="Q3J-Ho-AAI"/>
+                                    <constraint firstItem="N9T-P8-ln0" firstAttribute="centerY" secondItem="5d4-hr-WSY" secondAttribute="centerY" id="grZ-I2-pmO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -50,7 +52,6 @@
                             <constraint firstItem="5d4-hr-WSY" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" id="hun-gF-3WR"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="5d4-hr-WSY" secondAttribute="trailing" id="o6E-0f-tMH"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="5d4-hr-WSY" secondAttribute="bottom" id="vhD-NE-kfc"/>
-                            <constraint firstItem="5d4-hr-WSY" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="wfv-UF-hN8"/>
                         </constraints>
                     </view>
                 </viewController>
