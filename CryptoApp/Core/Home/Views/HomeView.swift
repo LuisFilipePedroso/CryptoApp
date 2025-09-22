@@ -154,6 +154,7 @@ struct HomeView: View {
                     .onTapGesture {
                         segue(coin: coin)
                     }
+                    .listRowBackground(Color.theme.background)
             }
         }
         .listStyle(PlainListStyle())
@@ -167,6 +168,7 @@ struct HomeView: View {
                     .onTapGesture {
                         segue(coin: coin)
                     }
+                    .listRowBackground(Color.theme.background)
             }
         }
         .listStyle(PlainListStyle())

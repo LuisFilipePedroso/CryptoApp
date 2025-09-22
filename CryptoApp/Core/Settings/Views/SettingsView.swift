@@ -19,10 +19,17 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                DescriptionWithLinksSection
-                CoinGeckoSection
+            ZStack {
+                Color.theme.background
+                    .ignoresSafeArea()
+                
+                List {
+                    DescriptionWithLinksSection
+                    CoinGeckoSection
+                }
             }
+            .scrollContentBackground(.hidden)
+            .disabled(true)
             .font(.headline)
             .tint(.blue)
             .listStyle(GroupedListStyle())
@@ -60,6 +67,7 @@ extension SettingsView {
             Link("Subscribe on YouTube 🥳", destination: youtubeURL)
             Link("Read my content on dev.to", destination: devToURL)
         }
+        .listRowBackground(Color.theme.background.opacity(0.5))
     }
     
     private var CoinGeckoSection: some View {
@@ -77,5 +85,6 @@ extension SettingsView {
             .padding(.vertical)
             Link("Visit CoinGecko 🥳", destination: coingeckoURL)
         }
+        .listRowBackground(Color.theme.background.opacity(0.5))
     }
 }
